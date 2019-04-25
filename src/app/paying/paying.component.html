@@ -1,0 +1,81 @@
+<div>
+  <p></p>
+</div>
+<div class="container">
+  <h3>The price is {{ lastPrice?.pricePerHour }} &#8364; per hour</h3>
+</div>
+<div class="container">
+  <form [formGroup]="form1" (submit)="onFormSubmit1()">
+    <div class="form-group">
+      <label>If you want to change the price :</label>
+      <input
+        placeholder="Price"
+        class="form-control"
+        type="number"
+        formControlName="price"
+        min="1"
+      />
+    </div>
+    <div>
+      <P></P>
+    </div>
+    <button class="btn btn-large btn-primary" [disabled]="form1?.invalid">
+      change price
+    </button>
+  </form>
+</div>
+<div>
+  <p></p>
+</div>
+<div class="container">
+  <h3>choose the reservation to pay :</h3>
+</div>
+<div class="container">
+  <form [formGroup]="form" (submit)="onFormSubmit()">
+    <div class="form-group">
+      <select formControlName="reservation" class="form-control">
+        <option *ngFor="let r of allReservations" [ngValue]="r"
+          >The boat number {{ r.boat.boatNumber }}, the guest name is
+          {{ r.guest.name }} and the reservation start time (
+          {{ r.startTime }} )
+        </option>
+      </select>
+    </div>
+    <button class="btn btn-large btn-primary" [disabled]="form?.invalid">
+      Paying
+    </button>
+  </form>
+  <p></p>
+  <h4 *ngIf="pay > -1">The total to pay is {{ pay }} &#8364;</h4>
+</div>
+<!-- ppppp new form -->
+<div>
+  <p></p>
+</div>
+<div class="container">
+  <h3>choose the trip to pay :</h3>
+</div>
+<div class="container">
+  <form [formGroup]="form2" (submit)="onFormSubmit2()">
+    <div class="form-group">
+      <select formControlName="trip" class="form-control">
+        <option *ngFor="let t of allTrips" [ngValue]="t"
+          >The boat number {{ t.boat.boatNumber }} and the trip start time (
+          {{ t.startTime }} )
+        </option>
+      </select>
+    </div>
+    <button class="btn btn-large btn-primary" [disabled]="form2?.invalid">
+      Paying
+    </button>
+  </form>
+  <p></p>
+  <h4 *ngIf="payTrip > -1">The total to pay is {{ payTrip }} &#8364;</h4>
+</div>
+<div class="container">
+  <a routerLink="/"
+    ><button class="btn btn-primary btn-large btn-outline-danger">
+      Back to main page
+    </button></a
+  >
+</div>

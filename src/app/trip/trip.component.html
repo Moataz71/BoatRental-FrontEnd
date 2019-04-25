@@ -1,0 +1,66 @@
+<div class="container">
+  <h1>Start a trip</h1>
+  Please fill in these Fields :
+  <hr />
+  <form [formGroup]="form" (submit)="onFormSubmit()">
+    <div class="form-group">
+      <label>Number of persons</label>
+      <input
+        placeholder="Number of persons"
+        class="form-control"
+        type="number"
+        formControlName="numberOfPersons"
+        max="12"
+        min="1"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      Check Avaliable
+    </button>
+
+    <p></p>
+
+    <h4 *ngIf="boatsId?.length == 0">Sorry The time is Not available</h4>
+    <div class="container" *ngIf="boatsId?.length > 0">
+      <h4>
+        The time is available please enter a boat ID to start a trip
+      </h4>
+      <p *ngFor="let b of result">
+        Boat ID ( {{ b.id }} ) is available until {{ b.start }}
+      </p>
+    </div>
+  </form>
+</div>
+<div class="container" *ngIf="boatsId?.length > 0">
+  <form [formGroup]="form" (submit)="ss()">
+    <div class="form-group">
+      <label>Boat ID</label>
+      <input
+        placeholder="boat ID"
+        class="form-control"
+        type="number"
+        formControlName="idboat"
+        max="120"
+        min="1"
+      />
+      <!-- <label></label>
+      <select class="form-control" formControlName="idboat">
+        <option *ngFor="let b of result" [ngValue]="result.id">
+          Boat id number : {{ b.id }} is available until {{ b.start }}</option
+        >
+      </select> -->
+    </div>
+
+    <button class="btn btn-large btn-primary" [disabled]="form?.invalid">
+      Start trip
+    </button>
+  </form>
+</div>
+<div class="container">
+  <a routerLink="/"
+    ><button class="btn btn-primary btn-large btn-outline-danger">
+      Back to main page
+    </button></a
+  >
+</div>

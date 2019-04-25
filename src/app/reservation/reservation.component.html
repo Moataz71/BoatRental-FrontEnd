@@ -1,0 +1,105 @@
+<div class="container">
+  <h1>Boat Reservation</h1>
+  Please fill in these fields :
+  <hr />
+  <form [formGroup]="form" (submit)="onFormSubmit()">
+    <div class="form-group">
+      <label>Start Time :</label>
+      <input
+        placeholder="Start time"
+        class="form-control"
+        type="datetime-local"
+        formControlName="startTime"
+        min="{{ displayDate }}"
+        step="600"
+      />
+    </div>
+    <div class="form-group">
+      <label>End time :</label>
+      <input
+        placeholder="End Time"
+        class="form-control"
+        type="datetime-local"
+        formControlName="endTime"
+        min="{{ displayDate }}"
+        step="600"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Number of persons :</label>
+      <input
+        placeholder="Number of persons"
+        class="form-control"
+        type="number"
+        formControlName="numberOfPersons"
+        max="12"
+        min="1"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      Check Avaliable
+    </button>
+    <p></p>
+    <h4 *ngIf="boats?.length > 0">
+      The time is available please full in the rest information
+    </h4>
+    <h4 *ngIf="boats?.length == 0">Sorry The time is Not available</h4>
+  </form>
+</div>
+<div class="container" *ngIf="boats?.length > 0">
+  <h1>Guest information</h1>
+  <form [formGroup]="form" (submit)="rr()">
+    <div class="form-group">
+      <div class="form-group">
+        <label>Name</label>
+        <input
+          placeholder="name"
+          class="form-control"
+          type="text"
+          formControlName="name"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>ID type</label>
+        <input
+          placeholder="idtype"
+          class="form-control"
+          type="text"
+          formControlName="idtype"
+        />
+      </div>
+
+      <label>ID number</label>
+      <input
+        placeholder="idnumber"
+        class="form-control"
+        type="text"
+        formControlName="idnumber"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Phone Number</label>
+      <input
+        placeholder="phonenumber"
+        class="form-control"
+        type="text"
+        formControlName="phonenumber"
+      />
+    </div>
+
+    <button class="btn btn-large btn-primary" [disabled]="form?.invalid">
+      Reserve
+    </button>
+  </form>
+</div>
+<div class="container">
+  <a routerLink="/"
+    ><button class="btn btn-primary btn-large btn-outline-danger">
+      Back to main page
+    </button></a
+  >
+</div>
