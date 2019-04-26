@@ -4,4 +4,5 @@ export class Trip {
   public boat: Boat;
   public startTime: string;
   public numberOfPersons: string;
+  public active: boolean;
 }

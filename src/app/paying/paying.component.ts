@@ -94,7 +94,7 @@ export class PayingComponent implements OnInit {
       this.allTrips = [];
       for (let t1 of allT) {
         const d1start = t1.startTime.slice(0, 10);
-        if (d1start >= nowDate) {
+        if (d1start >= nowDate && t1.active == true) {
           this.allTrips.push(t1);
         }
       }

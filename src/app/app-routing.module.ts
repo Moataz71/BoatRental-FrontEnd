@@ -5,6 +5,8 @@ import { ReservationComponent } from './reservation/reservation.component';
 import { TripComponent } from './trip/trip.component';
 import { PayingComponent } from './paying/paying.component';
 import { BoatComponent } from './boat/boat.component';
+import { OverviewComponent } from './overview/overview.component';
+import { CancelComponent } from './cancel/cancel.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,14 @@ const routes: Routes = [
   {
     path: 'boat',
     component: BoatComponent
+  },
+  {
+    path: 'overview',
+    component: OverviewComponent
+  },
+  {
+    path: 'cancel',
+    component: CancelComponent
   }
 ];
 

@@ -10,9 +10,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TripComponent } from './trip/trip.component';
 import { MainComponent } from './main/main.component';
 import { PayingComponent } from './paying/paying.component';
+import { OverviewComponent } from './overview/overview.component';
+import { CancelComponent } from './cancel/cancel.component';
 
 @NgModule({
-  declarations: [AppComponent, BoatComponent, ReservationComponent, TripComponent, MainComponent, PayingComponent],
+  declarations: [AppComponent, BoatComponent, ReservationComponent, TripComponent, MainComponent, PayingComponent, OverviewComponent, CancelComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

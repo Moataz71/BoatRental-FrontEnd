@@ -29,8 +29,21 @@ export class ReservationComponent implements OnInit {
   public allReservations$: Observable<Reservation[]>;
   public availableBoats$: Observable<Boat[]>;
   public boats: Boat[];
+  public sunSet: number;
   private onError = (error: HttpErrorResponse) =>
     (this.errorMessage = 'Something went wrong');
+
+  public getSunSet() {
+    this.reservationService.getSunSet().subscribe(x => {
+      const sun0: number = x['results']['sunset'];
+      const sun1: string = sun0
+        .toString()
+        .slice(11, 16)
+        .replace(':', '');
+
+      this.sunSet = Number(sun1);
+    });
+  }
 
   public rr() {
     const guest: Guest = this.form.getModel4();
@@ -73,6 +86,7 @@ export class ReservationComponent implements OnInit {
     const d1start = new Date(dateSsent).getDate();
     const d2End = new Date(dateEsent).getDate();
     const d3Now = new Date(nowDate).getDate();
+    const dtNow = new Date(nowDate);
     const numberofpersons1: string = this.form.getModel3();
 
     let starttimesent = Number(timesent);
@@ -96,6 +110,8 @@ export class ReservationComponent implements OnInit {
       alert(`plesae enter valid start time or end time`);
     } else if (d2End != d1start) {
       alert(`Sorry you can NOT reserve a boat for days`);
+    } else if (endtimesent > this.sunSet) {
+      alert(`Sorry you can NOT reserve after time of sun set`);
     }
     // end time picker validation
     else {
@@ -127,6 +143,7 @@ export class ReservationComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getSunSet();
     // }
     // public getReservations() {
     //   this.allReservations$ = this.reservationService.getAllReservations();

@@ -3,6 +3,7 @@ import { Boat } from '../shared/model/boat.model';
 import { Observable } from 'rxjs';
 import { BoatService } from '../shared/service/boat.service';
 import { AddBoat } from './boat.form';
+import { ReservationService } from '../shared/service/reservation.service';
 
 @Component({
   selector: 'app-boat',
@@ -18,6 +19,8 @@ export class BoatComponent implements OnInit {
   public boat1$: Observable<Boat>;
   public allBoats$: Observable<Boat[]>;
   public errorMessage: string;
+
+  public sunSet: any;
 
   public onFormSubmit() {
     const newBoat: Boat = this.form.getModel();
@@ -45,7 +48,10 @@ export class BoatComponent implements OnInit {
     });
   }
 
-  constructor(private readonly boatService: BoatService) {}
+  constructor(
+    private readonly boatService: BoatService,
+    private readonly reservationSerivce: ReservationService
+  ) {}
 
   ngOnInit() {
     this.getBoats();

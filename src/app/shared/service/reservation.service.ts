@@ -9,8 +9,14 @@ import { Reservation } from '../model/reservation.model';
 })
 export class ReservationService {
   private readonly endpoint = 'http://localhost:8080';
+  private readonly endpoint1 =
+    'https://api.sunrise-sunset.org/json?lat=36.7201600&lng=-4.4203400&date=today&formatted=0';
 
   constructor(private readonly http: HttpClient) {}
+
+  public getSunSet(): Observable<any> {
+    return this.http.get<any>(this.endpoint1);
+  }
 
   public getReservation(id: number): Observable<Reservation> {
     return this.http.get<Reservation>(this.endpoint + '/get-reservation/' + id);

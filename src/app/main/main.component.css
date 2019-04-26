@@ -1,3 +1,27 @@
+#logo {
+  position: relative;
+  z-index: 2;
+  margin-left: 36%;
+  color: white;
+  animation: color-me-in 3s infinite;
+}
+@keyframes color-me-in {
+  0% {
+    color: rgb(245, 249, 250);
+  }
+  25% {
+    color: rgb(54, 182, 247);
+  }
+  50% {
+    color: blue;
+  }
+  75% {
+    color: rgb(27, 17, 112);
+  }
+  100% {
+    color: black;
+  }
+}
 #bg {
   position: fixed;
   top: 0;
@@ -9,10 +33,15 @@
 }
 
 #page-wrap {
+  float: left;
   position: relative;
   z-index: 2;
-  width: 400px;
-  margin: 50px auto;
+  width: 350px;
+  margin-top: 50px;
+  margin-right: 25px;
+  margin-bottom: 50px;
+  margin-left: 15%;
+  /* margin: 50px auto; */
   padding: 20px;
   background: white;
   -moz-box-shadow: 0 0 20px black;
@@ -25,6 +54,15 @@
 }
 a:hover {
   text-decoration: none;
+}
+.zoom {
+  transition: transform 0.2s; /* Animation */
+}
+
+.zoom:hover {
+  transform: scale(
+    1.5
+  ); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 * {

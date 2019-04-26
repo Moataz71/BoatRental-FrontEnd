@@ -51,7 +51,8 @@ export class TripComponent implements OnInit {
           const trip1: Trip = {
             startTime: dateTimeNow,
             numberOfPersons: numberofpersons1,
-            boat: this.boat1
+            boat: this.boat1,
+            active: true
           };
           console.log(trip1);
           this.tripService.addTrip(trip1).subscribe(() => {
